@@ -1,0 +1,39 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+}
+body {
+    margin: auto auto;
+    overflow: hidden;
+    background-color: red;
+}
+#w {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+#g {
+    background-color: black;
+    width: 100%;
+}
+/* @media screen and (orientation: landscape) {
+    all happy
+} */
+@media screen and (orientation: portrait) {
+    /* not happy */
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        height: 100vw;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+}
