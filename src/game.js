@@ -1,7 +1,7 @@
 // import { samples, play, convertNoteToFreq, LENGTHS } from './airportmusic'
 
-const WIDTH = 1200
-const HEIGHT = 675
+const WIDTH = 657
+const HEIGHT = 1200
 
 const TITLE = 0
 const LEVELSELECT = 1
@@ -44,7 +44,12 @@ class Game {
 
     constructor(imgs) {
         this.imgs = imgs
-        this.state = LEVELSELECT
+        this.state = LEVEL
+
+        this.bgx = 0
+        this.bgy = 0
+        this.bgdir = -1
+        this.bgydir = -1
     }
     start ()  {
 
@@ -53,8 +58,44 @@ class Game {
         ) */
     }
 
-    update () {
+    updateGame() {
+        if (this.bgdir < 0) {
+            this.bgx -= 0.1
+        } else {
+            this.bgx += 0.1
+        }
+        if (this.bgx < -13) {
+            this.bgdir = 1
+        }
+        if (this.bgx > 15) {
+            this.bgdir = -1
+        }
 
+        if (this.bgydir < 0) {
+            this.bgy -= 0.1
+        } else {
+            this.bgy += 0.1
+        }
+        if (this.bgy < -5) {
+            this.bgydir = 1
+        }
+        if (this.bgy > 5) {
+            this.bgydir = -1
+        }
+        // this.bgy = new Date&1 // random boolean
+        // this.bgy = (new Date%3) random int between 0 and  < 3
+    }
+
+    update () {
+        switch(this.state) {
+            case TITLE:
+
+            case LEVELSELECT:
+
+            case LEVEL:
+                // nothing yet
+                this.updateGame()
+        }
     }
 
     render (ctx) {
@@ -62,9 +103,10 @@ class Game {
             case TITLE:
                 return this.titlescreen(ctx)
             case LEVELSELECT:
-                return this.levelSelect(ctx)
+                //return this.levelSelect(ctx)
             case LEVEL:
                 // nothing yet
+                return this.drawGame(ctx)
         }
     }
 
@@ -75,14 +117,28 @@ class Game {
 
     levelSelect (ctx) {
 
-        ctx.drawImage(this.imgs[0], 75, 0)
-        ctx.drawImage(this.imgs[1], 0, 0)
+
 
         /* ctx.fillStyle = 'green';
         ctx.fillRect(100, 100, 600, 400)
 
         ctx.fillStyle = 'green';
         ctx.fillRect(900, 10, 290, 655) */
+    }
+
+    rect(ctx, x, y, w, h, c) {
+        ctx.fillStyle = c
+        ctx.fillRect(x, y, w, h);
+    }
+
+    drawTrain(ctx) {
+        this.rect(ctx, 250, 100, 200, 200, '#fff')
+        ctx.drawImage(this.imgs[0], 75 + this.bgx, 0 + this.bgy)
+        ctx.drawImage(this.imgs[1], 0, 0)
+    }
+
+    drawGame(ctx) {
+        this.drawTrain(ctx)
     }
 }
 
