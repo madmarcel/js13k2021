@@ -1,10 +1,10 @@
 ## Purpose
 
-The purpose of this project is to help make building [JS13k](https://js13kgames.com/) projects easier for folks who are familiar with the JavaScript ecosystem but don't want to go through the hassle of setting up a JS13k-specific build environment. The bulk of this project is a [Webpack](https://webpack.js.org/) config that does the following: 
+The purpose of this project is to help make building [JS13k](https://js13kgames.com/) projects easier for folks who are familiar with the JavaScript ecosystem but don't want to go through the hassle of setting up a JS13k-specific build environment. The bulk of this project is a [Webpack](https://webpack.js.org/) config that does the following:
 
-- Transpiles TypeScript (if any)
 - Minifies the resulting JavaScript
 - Inlines the JavaScript into an `index.html` file (in production)
+- Inlines the CSS into an `index.html` file (in production)
 - Zips the `index.html` file
 - Checks that the zip file is under 13k
 - Runs `webpack-bundle-analyzer`
@@ -33,7 +33,7 @@ Builds, minifies, inlines, and zips the game to `./zipped/game.zip`. This comman
 
 ## Notes
 
-- Put your TS or JS in `src/index.ts`
+- Put your JS in `src/index.tj`
 - Put your css in `src/index.html`
 - Put your images or other assets in `assets/`
 - This starter pulls in [this plugin](https://github.com/facebook/create-react-app/blob/edc671eeea6b7d26ac3f1eb2050e50f75cf9ad5d/packages/react-dev-utils/InlineChunkHtmlPlugin.js#L10) from Facebook's [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html) to inline the JS into the HTML file.

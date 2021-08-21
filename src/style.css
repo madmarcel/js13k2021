@@ -9,22 +9,25 @@
 body {
     margin: auto auto;
     overflow: hidden;
-    background-color: red;
+    background-color: #ccc;
 }
 #w {
     display: flex;
     justify-content: center;
     height: 100%;
-    align-items: center;
+    align-items: top;
 }
 #g {
     background-color: black;
     width: 100%;
+    /*top: 0;
+    left: 0;
+    position: absolute;*/
 }
 /* @media screen and (orientation: landscape) {
     all happy
 } */
-@media screen and (orientation: portrait) {
+@media screen and (orientation: landscape) {
     /* not happy */
     html {
         transform: rotate(-90deg);
