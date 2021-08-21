@@ -38,7 +38,7 @@ jobs:
       run: yarn install
 
     - name: Build Game
-      run: yarn party
+      run: yarn build
 
     - name: Deploy to itch.io
       uses: josephbmanley/butler-publish-itchio-action@master
@@ -47,4 +47,4 @@ jobs:
         CHANNEL: linux
         ITCH_GAME: hurryuptidyup
         ITCH_USER: madmarcel
-        PACKAGE: zipped
+        PACKAGE: dist
