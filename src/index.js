@@ -53,6 +53,10 @@ import "./style.css";
         swipe.addEventListener('touchend', e => {
             // console.log('end')
             isDragging = false;
+
+            if(Math.abs(parseInt(swipe.style.left)) > 200 ) {
+                console.log('yes')
+            }
             t = null;
             swipe.style.left = `0px`
             swipe.style.top = `0px`
