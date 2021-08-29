@@ -31,6 +31,10 @@ module.exports = merge(common, {
         {
           from: "src/manifest.json",
           to: "../dist",
+        },
+        {
+          from: "src/i.webp",
+          to: "../dist",
         }
       ]
     })

@@ -17,16 +17,62 @@ body {
     height: 100%;
     align-items: top;
 }
-#g {
-    background-color: black;
-    width: 100%;
-    /*top: 0;
-    left: 0;
-    position: absolute;*/
+
+/* bg panel */
+#panel {
+    display: flex;
+    background-color: white;
+    border-radius: 90px;
+    width: 95%;
+    height: 95%;
+    margin-top: 5%;
+    flex-flow: column;
+    overflow: hidden;
 }
-/* @media screen and (orientation: landscape) {
-    all happy
-} */
+
+h1 {
+    margin: 1em auto;
+    font: 80px 'Arial Black'; /* ,sans-serif'; */
+}
+
+h2 {
+    margin: 1em auto;
+    font-size: 60px;
+}
+
+#choice {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    font: 60px 'Arial';
+}
+
+#choicewrapper {
+    margin: 10em auto;
+    display: block;
+    background-color: mintcream;
+    width: 60%;
+    height: 50%;
+    border-radius: 90px;
+}
+
+#choicepic {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    background-color: #ccc;
+    width: 100%;
+    height: 100%;
+    border-radius: 90px;
+
+    transition: all .1s ease-in-out;
+}
+
+.rotated90 {
+    transform:rotate(90deg);
+}
+
 @media screen and (orientation: landscape) {
     /* not happy */
     html {

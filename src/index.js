@@ -1,43 +1,72 @@
 import "./style.css";
-import Game from './game.js'
 
 (function() {
-
-    const convertSVGtoImages = (id, width, height) => {
-        const SVG = document.getElementById(id)
-        const XML = new XMLSerializer().serializeToString(SVG)
-        const SVG64 = btoa(XML) //.toString('base64')
-
-        const img = new Image()
-        img.height = height
-        img.width = width
-        img.src = 'data:image/svg+xml;base64,' + SVG64
-        return img
-    }
-
     // start game when page has finished loading
     window.addEventListener('load', function() {
-        const canvas = document.getElementById('g')
-        const ctx = canvas.getContext('2d')
-        const WIDTH = 675
-        const HEIGHT = 1200
+        const swipe = document.getElementById('choicepic')
 
-        const imgs = []
+        let isDragging = false;
+        let t = null
+        let startX = 0;
 
-        imgs.push(convertSVGtoImages('b', 526, 420))
-        imgs.push(convertSVGtoImages('t', 675, 1200))
-
-        const currentState = new Game(imgs)
-
-        // the main loop
-        let tick = () => {
-            currentState.update()
-            ctx.clearRect(0, 0, WIDTH, HEIGHT)
-            currentState.render(ctx)
-            requestAnimationFrame(tick)
+        const copyTouch = ({ identifier, pageX, pageY }) => {
+            return { identifier, pageX, pageY }
         }
 
-        currentState.start()
-        tick()
+        swipe.addEventListener('touchstart', e => {
+            e.preventDefault();
+            isDragging = true;
+            const touches = e.changedTouches;
+            t = copyTouch(touches[0])
+            // console.log('start', t.pageX, t.pageY)
+            startX = t.pageX
+        })
+
+        swipe.addEventListener('touchmove', e => {
+            if (isDragging) {
+                // console.log(e.changedTouches)
+                let l = e.changedTouches.length - 1;
+
+                let temp = copyTouch(e.changedTouches[0])
+
+                if (temp.pageX !== t.pageX) {
+                    t = temp;
+                    //console.log('move', t.pageX, t.pageY)
+
+                    const diff = (startX - t.pageX) * -1
+
+                    swipe.style.left = `${diff}px`
+                    swipe.style.top = `${Math.abs(diff / 2)}px`
+
+                    let w = swipe.offsetWidth;
+                    let r = 0
+                    if (diff > 0) {
+                        r = (t.pageX) / w * 10;
+                    } else {
+                        r = (-1 * t.pageX) / w * 10;
+                    }
+                    swipe.style.transform = "rotate("+ r + "deg)"
+                }
+            }
+        })
+
+        swipe.addEventListener('touchend', e => {
+            // console.log('end')
+            isDragging = false;
+            t = null;
+            swipe.style.left = `0px`
+            swipe.style.top = `0px`
+            swipe.style.transform = "rotate(0deg)"
+        })
+
+        swipe.addEventListener('touchcancel', e => {
+            // console.log('cancel')
+            isDragging = false;
+            t = null;
+            swipe.style.left = `0px`
+            swipe.style.top = `0px`
+            swipe.style.transform = "rotate(0deg)"
+        })
+
     })
 })()

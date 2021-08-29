@@ -10,6 +10,7 @@ const archive = archiver("zip", { zlib: { level: 9 } });
 
 archive.pipe(output);
 archive.file(distDir + "/index.html", { name: "index.html" });
-archive.file(distDir + "/manifest.json", { name: "manifest.json" });
+// archive.file(distDir + "/manifest.json", { name: "manifest.json" });
+// archive.file(distDir + "/i.webp", { name: "i.webp" });
 
 archive.finalize();
