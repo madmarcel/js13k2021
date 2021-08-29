@@ -14,15 +14,17 @@ body {
 #w {
     display: flex;
     justify-content: center;
-    height: 100%;
+    /* height: 100%; */
     align-items: top;
+    height: 90vh;
+    width: 48vh;
 }
 
 /* bg panel */
 #panel {
     display: flex;
     background-color: white;
-    border-radius: 90px;
+    border-radius: 40px;
     width: 95%;
     height: 95%;
     margin-top: 5%;
@@ -32,28 +34,28 @@ body {
 
 h1 {
     margin: 1em auto;
-    font: 80px 'Arial Black'; /* ,sans-serif'; */
+    font: 30px 'Arial Black'; /* ,sans-serif'; */
 }
 
 h2 {
     margin: 1em auto;
-    font-size: 60px;
+    font-size: 20px;
 }
 
 #choice {
     display: flex;
     justify-content: center;
     margin: 1em;
-    font: 60px 'Arial';
+    font: 20px 'Arial';
 }
 
 #choicewrapper {
-    margin: 10em auto;
+    margin: 1em auto;
     display: block;
     background-color: mintcream;
-    width: 60%;
+    width: 80%;
     height: 50%;
-    border-radius: 90px;
+    border-radius: 40px;
 }
 
 #choicepic {
@@ -64,17 +66,12 @@ h2 {
     background-color: #ccc;
     width: 100%;
     height: 100%;
-    border-radius: 90px;
+    border-radius: 40px;
 
     transition: all .1s ease-in-out;
 }
-
-.rotated90 {
-    transform:rotate(90deg);
-}
-
+/*
 @media screen and (orientation: landscape) {
-    /* not happy */
     html {
         transform: rotate(-90deg);
         transform-origin: left top;
@@ -86,3 +83,4 @@ h2 {
         left: 0;
     }
 }
+*/
